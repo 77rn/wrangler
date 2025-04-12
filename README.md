@@ -227,3 +227,21 @@ Support for two new token types has been added at the grammar level:
 - **`TIME_DURATION`** – Matches expressions like `150ms`, `10s`, `2h`.
 
 These token rules have been defined in the `Directives.g4` grammar file, along with supporting lexer fragments for byte and time units.
+
+## 2. API Enhancements
+
+### ByteSize Support
+
+The system now supports parsing string inputs with byte size units like:
+
+- `10MB`, `512KB`, `1GB`, etc.
+
+These values are parsed into their corresponding byte values using the `ByteSize` utility class.
+
+### TimeDuration Support
+
+Inputs like:
+
+- `30s`, `5min`, `2h`, `1d` (day), etc.
+
+are now handled by the `TimeDuration` class, which converts them into equivalent seconds or milliseconds (depending on the use case).
