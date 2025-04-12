@@ -340,3 +340,8 @@ fragment Int
 fragment Digit
  : [0-9]
  ;
+byteSizeArg : BYTE_SIZE;
+timeDurationArg : TIME_DURATION;
+
+ByteSizeArg: [0-9]+ 'MB' | [0-9]+ 'KB' | [0-9]+ 'GB';
+TimeDurationArg: [0-9]+ 'h' | [0-9]+ 'm' | [0-9]+ 's';

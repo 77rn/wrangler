@@ -245,3 +245,29 @@ Inputs like:
 - `30s`, `5min`, `2h`, `1d` (day), etc.
 
 are now handled by the `TimeDuration` class, which converts them into equivalent seconds or milliseconds (depending on the use case).
+
+
+## 3. Core Parser Updates
+
+This update introduces support for `ByteSizeArg` and `TimeDurationArg` in the grammar and parsing logic of the directive language.
+
+### Summary of Changes
+
+1. **Directive.g4 Update**  
+   - Added new grammar rules: `ByteSizeArg` and `TimeDurationArg`.
+   - Enables parsing of byte size and time duration values.
+
+2. **Maven Plugin Configuration**  
+   - Configured `antlr4-maven-plugin` in `pom.xml`.
+   - Automatically generates lexer and parser classes from grammar.
+
+3. **ANTLR Code Generation**  
+   - Ran `mvn generate-resources` to create updated parser files.
+
+4. **RecipeVisitor Update**  
+   - Implemented `visitByteSizeArg` and `visitTimeDurationArg` methods.
+   - Used `createTokenGroup` and `addToken` to group tokens with source info.
+
+5. **Token Handling**  
+   - ByteSize and TimeDuration token instances are added to `TokenGroup`.
+   - Groups are processed by `RecipeSymbol` for further evaluation.

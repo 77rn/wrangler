@@ -358,6 +358,19 @@
           </items>
         </configuration>
       </plugin>
+      <plugin>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-maven-plugin</artifactId>
+            <version>${antlr4-maven-plugin.version}</version> <!-- or your version -->
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>antlr4</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
     </plugins>
   </build>
 
