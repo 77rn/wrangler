@@ -271,3 +271,21 @@ This update introduces support for `ByteSizeArg` and `TimeDurationArg` in the gr
 5. **Token Handling**  
    - ByteSize and TimeDuration token instances are added to `TokenGroup`.
    - Groups are processed by `RecipeSymbol` for further evaluation.
+
+## 4. AggregateStats Directive
+
+This is a custom directive for CDAP Wrangler that enables the aggregation of data related to byte sizes and time durations. It supports aggregation types such as totals and averages, and provides optional unit conversions for the resulting values.
+
+### Description
+
+The `AggregateStats` directive is designed to perform aggregation operations on input data that contains byte size and time duration fields. It processes each row of data, accumulating the values of the specified size and time columns, and computes either the total or average based on the selected aggregation type. The final output includes the aggregated results in the specified unit of measurement.
+
+This directive operates over multiple batches of rows and uses a transient store to retain intermediate aggregation results. It emits the final aggregated values only in the last batch of execution.
+
+### Features
+
+- Aggregates values from specified byte size and time duration columns.
+- Supports aggregation types such as `total` and `average`.
+- Provides unit conversion options for output results (e.g., bytes to MB, milliseconds to seconds).
+- Outputs the final aggregated results in new columns.
+- Maintains lineage information for input and output columns.
