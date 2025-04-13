@@ -289,3 +289,18 @@ This directive operates over multiple batches of rows and uses a transient store
 - Provides unit conversion options for output results (e.g., bytes to MB, milliseconds to seconds).
 - Outputs the final aggregated results in new columns.
 - Maintains lineage information for input and output columns.
+
+## 5.Unit Testings - Wrangler Core
+
+This directive performs aggregation on byte size and time duration columns, outputting totals or averages in specified units (e.g., MB, seconds).
+
+### Key Features
+- Parses and converts units using `ByteSize` and `TimeDuration`.
+- Supports total/average aggregation types with unit conversion.
+- Accepts optional output units and aggregation type.
+
+### Tests Added
+- `ByteSizeTest.java` – Validates parsing and canonical conversion of byte sizes.
+- `TimeDurationTest.java` – Tests parsing of various time duration formats.
+- `ByteTimeParserTest.java` – Ensures directive syntax parsing works correctly.
+- `AggregateStatsTest.java` – Verifies directive execution and output accuracy.
